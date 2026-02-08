@@ -1,0 +1,4 @@
+packages:
+  - "packages/sdk"
+  - "packages/contracts"
+  - "packages/examples/*"

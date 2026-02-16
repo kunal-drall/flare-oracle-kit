@@ -1,0 +1,65 @@
+{
+  "name": "@flare-oracle-kit/contracts",
+  "version": "0.1.0",
+  "description": "Solidity contracts for Flare Network oracle integration — MockFTSOv2, FTSOGuard, OracleVault",
+  "keywords": [
+    "flare",
+    "ftso",
+    "oracle",
+    "solidity",
+    "hardhat",
+    "mock",
+    "defi"
+  ],
+  "license": "Apache-2.0",
+  "author": "XXIX Labs (29Projects)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/XXIX-labs/flare-oracle-kit",
+    "directory": "packages/contracts"
+  },
+  "type": "commonjs",
+  "main": "index.js",
+  "files": [
+    "contracts/",
+    "artifacts/",
+    "typechain-types/",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "hardhat compile",
+    "typecheck": "tsc --noEmit",
+    "test": "hardhat test",
+    "test:coverage": "hardhat coverage",
+    "clean": "rm -rf artifacts cache typechain-types",
+    "lint:sol": "solhint 'contracts/**/*.sol'"
+  },
+  "dependencies": {
+    "@flarenetwork/flare-periphery-contracts": "^0.1.41",
+    "@openzeppelin/contracts": "^5.0.0"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "@types/node": "^20.0.0",
+    "chai": "^4.4.1",
+    "dotenv": "^16.4.0",
+    "hardhat": "^2.22.0",
+    "solhint": "^5.0.0",
+    "typescript": "^5.5.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "keccak",
+      "secp256k1"
+    ]
+  }
+}

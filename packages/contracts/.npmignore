@@ -1,0 +1,14 @@
+# Exclude test-only helper contracts (not part of the public API)
+contracts/test/
+
+# Exclude test typechain types
+typechain-types/contracts/test/
+typechain-types/factories/contracts/test/
+
+# Exclude Hardhat internal build-info (large, not useful for consumers)
+artifacts/build-info/
+
+# Exclude OpenZeppelin re-exported artifacts (consumers have their own OZ)
+artifacts/@openzeppelin/
+typechain-types/@openzeppelin/
+typechain-types/factories/@openzeppelin/

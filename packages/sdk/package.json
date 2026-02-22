@@ -1,5 +1,5 @@
 {
-  "name": "@flare-oracle-kit/sdk",
+  "name": "@flare-oracle-kit-poc/sdk",
   "version": "0.1.0",
   "description": "TypeScript SDK for Flare Network enshrined oracles (FTSO v2 and FDC)",
   "keywords": ["flare", "ftso", "oracle", "blockchain", "typescript", "web3", "defi"],

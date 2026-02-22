@@ -1,6 +1,6 @@
 {
   "name": "flare-oracle-kit-poc-contracts",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Solidity contracts for Flare Network oracle integration — MockFTSOv2, FTSOGuard, OracleVault",
   "keywords": [
     "flare",

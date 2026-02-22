@@ -110,7 +110,7 @@ export class FlareOracle {
     const fee = await this.estimateFee(feedInfo.feedId);
 
     try {
-      const result = await contract.getFeedById(feedInfo.feedId, { value: fee });
+      const result = await contract.getFunction("getFeedById")(feedInfo.feedId, { value: fee });
       const [rawValue, decimals, timestamp] = result as [bigint, number, bigint];
       return this._buildPriceFeed(feedInfo.symbol, feedInfo.feedId, rawValue, decimals, timestamp);
     } catch (err) {
@@ -142,7 +142,7 @@ export class FlareOracle {
     const totalFee = await estimateFtsoFee(feeCalc, feedIds);
 
     try {
-      const result = await contract.getFeedsById(feedIds, { value: totalFee });
+      const result = await contract.getFunction("getFeedsById")(feedIds, { value: totalFee });
       const [rawValues, decimalsList, timestamp] = result as [bigint[], number[], bigint];
 
       return feedInfos.map((info, i) =>
@@ -194,7 +194,7 @@ export class FlareOracle {
 
     const contract = await this._ftsoV2Contract();
     try {
-      const result = await contract.getFeedById(feedInfo.feedId, { value: 0n });
+      const result = await contract.getFunction("getFeedById")(feedInfo.feedId, { value: 0n });
       const [, decimals] = result as [bigint, number, bigint];
       return Number(decimals);
     } catch (err) {

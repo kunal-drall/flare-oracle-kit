@@ -25,7 +25,7 @@ export async function estimateFtsoFee(
 ): Promise<bigint> {
   try {
     const calldata = FEEDS_BY_ID_IFACE.encodeFunctionData("getFeedsById", [feedIds]);
-    const fee = (await feeCalculatorContract.calculateFeeByIds(calldata)) as bigint;
+    const fee = (await feeCalculatorContract.getFunction("calculateFeeByIds")(calldata)) as bigint;
     return fee;
   } catch {
     // If the FeeCalculator call fails (e.g., contract unavailable or returns unexpected type),

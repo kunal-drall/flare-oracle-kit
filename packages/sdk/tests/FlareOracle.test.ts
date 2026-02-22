@@ -41,20 +41,33 @@ function makeMockFtsoV2(
     getFeedsById: [bigint[], number[], bigint];
   }> = {}
 ) {
-  return {
+  const mock = {
     getFeedById: vi.fn().mockResolvedValue(
       overrides.getFeedById ?? [100000n, 5, MOCK_TIMESTAMP]
     ),
     getFeedsById: vi.fn().mockResolvedValue(
       overrides.getFeedsById ?? [[100000n, 200000n], [5, 8], MOCK_TIMESTAMP]
     ),
+    // ethers Contract.getFunction() returns the named method — required after
+    // switching from contract.method() to contract.getFunction("method")()
+    getFunction: vi.fn((name: string) => {
+      if (name === "getFeedById") return mock.getFeedById;
+      if (name === "getFeedsById") return mock.getFeedsById;
+      throw new Error(`Mock: unknown function "${name}"`);
+    }),
   };
+  return mock;
 }
 
 function makeMockFeeCalc(fee = 0n) {
-  return {
+  const mock = {
     calculateFeeByIds: vi.fn().mockResolvedValue(fee),
+    getFunction: vi.fn((name: string) => {
+      if (name === "calculateFeeByIds") return mock.calculateFeeByIds;
+      throw new Error(`Mock: unknown function "${name}"`);
+    }),
   };
+  return mock;
 }
 
 // ── Tests ─────────────────────────────────────────────────────────────────────

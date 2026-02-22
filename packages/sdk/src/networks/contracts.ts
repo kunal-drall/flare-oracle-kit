@@ -43,7 +43,7 @@ export async function resolveContractAddress(
   if (cached) return cached;
 
   const registry = new Contract(FLARE_CONTRACT_REGISTRY, REGISTRY_ABI, provider);
-  const address = (await registry.getContractAddressByName(contractName)) as string;
+  const address = (await registry.getFunction("getContractAddressByName")(contractName)) as string;
 
   if (!address || address === "0x0000000000000000000000000000000000000000") {
     throw new Error(
